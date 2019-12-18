@@ -48,7 +48,8 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: Baseball_Make_production
-  username: Baseball_Make
-  password: <%= ENV['BASEBALL_MAKE_DATABASE_PASSWORD'] %>
+
+<<: *default
+adapter: postgresql
+encoding: unicode
+pool: 5

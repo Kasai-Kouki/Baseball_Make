@@ -10,6 +10,42 @@
   </head>
 
   <body>
+    <% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+  <% end %>
+  
+  <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
+      <div class="container">
+        <%= link_to root_path do %>
+          
+        <% end %>
+        <ul class="header-navigation">
+  <div class="row">
+     <li><a　href="#">
+     <div class="col-md-offset-3 col-md-3">
+      <%= link_to 'チーム登録', new_user_path, class: 'btn btn-block btn-white' %>
+      </a></li>
+      </div>
+      <div class="col-md-3">
+       <li><a href="#">
+      <%= link_to 'ログイン', login_path,class: 'btn btn-block btn-white' %>
+      </a></li>
+      </div>
+  <li><a href="#">チーム</a></li>
+  <li><a href="#">対戦募集</a></li>
+          
+               
+              
+            </li>
+          
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
+    <script>
+  $(function(){
+    $(".alert").fadeOut(5000);
+  });
+</script>
   </body>
 </html>

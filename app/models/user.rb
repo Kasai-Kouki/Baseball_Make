@@ -10,8 +10,9 @@ class User < ApplicationRecord
   
   validates :teamname, presence: true, length: { maximum: 20}
   validates :area, presence: true, length: { maximum: 20}
-  has_many :area
+  has_many :areas
  
   validates :category, presence: true, length: { maximum: 20}
-  has_many :category
+  has_many :categories
+  has_many :stadiums
 end

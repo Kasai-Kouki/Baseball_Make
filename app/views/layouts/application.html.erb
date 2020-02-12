@@ -11,9 +11,9 @@
 
   <body>
     
-  <header>
+ <header>
    
-    <nav>
+    <nav class="header-box">
       <ul class="col-sm-3">
        <li class="top-box">
         <%= link_to root_path do %>
@@ -58,13 +58,8 @@
       </div>
     </nav>
    
-    <%= yield %>
-    <script>
-    $(function(){
-      $(".alert").fadeOut(5000);
-    });
-</script>
+  <%= yield %>
 
   </body>
-  
+
 </html>

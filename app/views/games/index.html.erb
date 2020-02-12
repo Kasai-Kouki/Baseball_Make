@@ -1,0 +1,19 @@
+<div class="game-index-wrapper">
+  <div class="container">
+    <% @games.each do |game| %>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="game-index-single">
+            <h2 class="game-author">
+            <p>代表者名  <%= game.user.name %></p>
+             <p>カテゴリー  <%= game.category.category %></p>
+             <p>球場  <%= game.stadium.name %></p>
+              <p>開催日時  <%= game.start_at %></p>
+              <p>コメント  <%= game.comment %></p>
+            </h2>
+           </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

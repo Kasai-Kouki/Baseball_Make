@@ -4,8 +4,8 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :email
       t.string :teamname
-      t.string :area
-      t.string :category
+      t.integer :area_id
+      t.integer :category_id
       t.string :password_digest
 
       t.timestamps

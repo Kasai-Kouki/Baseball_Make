@@ -3,7 +3,7 @@
 	height: 100px;
 }
 .col-sm-9{
-    width: 200px;
+    width: 250px;
 	height: 100px;
 }
 .top-box{
@@ -18,10 +18,13 @@
      left:0px;
 }
 .navbar-brand{
+  
   position: absolute;
     width: 200px;
       height: 100px;
     left:0px;
   }
-
+.game-index-single{
+  background:#ddd; border: 1px #ff0000 solid; padding:15px;
+}
 }

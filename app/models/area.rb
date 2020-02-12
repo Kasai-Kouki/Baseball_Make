@@ -1,4 +1,4 @@
 class Area < ApplicationRecord
-  belongs_to :user
-  validates :area, presence: true
+  has_many :users
+  validates :name, presence: true
 end

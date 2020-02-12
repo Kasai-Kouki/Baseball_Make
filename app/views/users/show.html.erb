@@ -1,0 +1,40 @@
+<html>
+<div class="titile-box">
+  <h1 class= mypage-box>マイページ</h1>
+</div>
+
+<div class="category-box">
+          <% if current_user.admin? %>
+             <h1 class="category-center">カテゴリー登録</h1>
+            <%= form_for @category do |f| %>
+              <%= f.text_field :category %>
+              <%= f.submit '登録', class: 'category-block' %>
+          <% end %>
+        <% end %>
+</div>
+  <div class="stadium-box">
+          <% if current_user.admin? %>
+          <h1 class="stadium-center">球場登録</h1>
+            <%= form_for @stadium do |f| %>
+              <%= f.text_field :name %>
+              <%= f.submit '登録', class: 'stadium-block' %>
+          <% end %>
+        <% end %>
+
+</div>
+  <div class="area-box">
+          <% if current_user.admin? %>
+          <h1 class="area-center">エリア登録</h1>
+            <%= form_for @area do |f| %>
+              <%= f.text_field :name %>
+              <%= f.submit '登録', class: 'area-block' %>
+          <% end %>
+        <% end %>
+
+</div>
+<%= @user.teamname %>
+<%= @user.name %>
+<%= @user.area.name %>
+<%= link_to '編集', edit_user_path %>
+
+</html>

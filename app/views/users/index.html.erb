@@ -1,0 +1,24 @@
+<div class="game-index-wrapper">
+ <p>チーム検索</p>
+  <%= form_tag(search_path, method: "get") do %>
+  <%= label :category, class: 'text-white' %>
+  <%= collection_select :category, :category_id, Category.all, :id, :category, {:class => 'form-control'}%>
+  <%= submit_tag "検索" %>
+  <% end %>
+  
+    <div class="container">
+      <% @users.each do |user| %>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="game-index-single">
+              <h2 class="game-author">
+              <%= user.teamname %>
+              <%= user.name %>
+              <%= user.area.name %>
+              </h2>
+             </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>

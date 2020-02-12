@@ -12,8 +12,44 @@ class UsersController < ApplicationController
       render :new
     end
   end
+  
+  def show
+    @user = User.find(current_user.id)
+    @category = Category.new
+    @stadium = Stadium.new
+    @area = Area.new
+  end
+  
+  def edit
+     @user = User.find(params[:id])
+  end
+  
+  def index
+    @users = User.all
+  end
+  
+  def search
+      @users = User.where(category_id: params[:category][:category_id])
+      render :index
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    if current_user == @user
+ 
+    if @user.update(user_params)
+    flash[:success] = 'ユーザー情報を編集しました。'
+    redirect_to user_path(id: @user.id)
+    else
+    flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
+    render :edit
+    end 
+    end
+ 
+  end
+  
   private
   def user_params
-    params.require(:user).permit(:name, :email,:teamname,:password, :password_confirmation,:area,:category)
+    params.require(:user).permit(:name, :email,:teamname,:password, :password_confirmation,:area_id,:category_id)
   end
 end

@@ -1,0 +1,8 @@
+<div class="category-box">
+        <h1 class="category-center">カテゴリー登録</h1>
+          <% if current_user.admin? %>
+            <%= form_for @category do |f| %>
+              <%= f.text_field :category %>
+              <%= f.submit '登録', class: 'category-block' %>
+          <% end %>
+        <% end %>

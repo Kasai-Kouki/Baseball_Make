@@ -1,8 +1,11 @@
-<div class="game-index-wrapper">
+<div class="container">
+ <div class="row">
  <p>チーム検索</p>
-  <%= form_tag(search_path, method: "get") do %>
-  <%= label :category, class: 'text-white' %>
+  <%= form_tag(search_users_path, method: "get") do %>
+  <%= label :category, 'カテゴリ' %>
   <%= collection_select :category, :category_id, Category.all, :id, :category, {:class => 'form-control'}%>
+  <%= label :area_id, '地域' %>
+  <%= collection_select :area, :area_id, Area.all, :id, :name, {:class => 'form-control'}%>
   <%= submit_tag "検索" %>
   <% end %>
   
@@ -21,4 +24,5 @@
         </div>
       <% end %>
     </div>
+ </div>
 </div>

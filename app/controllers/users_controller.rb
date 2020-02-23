@@ -18,18 +18,19 @@ class UsersController < ApplicationController
     @category = Category.new
     @stadium = Stadium.new
     @area = Area.new
+    @game = Game.new
   end
   
   def edit
-     @user = User.find(params[:id])
+     @user = User.find_by(id: params[:id],is_delete: false)
   end
   
   def index
-    @users = User.all
+    @users = User.where(is_delete: false)
   end
   
   def search
-      @users = User.where(category_id: params[:category][:category_id])
+      @users = User.where(area_id: params[:area][:area_id], category_id: params[:category][:category_id],is_delete: false)
       render :index
   end
   
@@ -37,15 +38,22 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user == @user
  
-    if @user.update(user_params)
-    flash[:success] = 'ユーザー情報を編集しました。'
-    redirect_to user_path(id: @user.id)
-    else
-    flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
-    render :edit
-    end 
+      if @user.update(user_params)
+        flash[:success] = 'ユーザー情報を編集しました。'
+        redirect_to user_path(id: @user.id)
+      else
+        flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
+        render :edit
+      end 
     end
  
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.is_delete = '1'
+    @user.save
+     render template: "pages/index"
   end
   
   private

@@ -4,7 +4,10 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: email_params[:email])
-    if user && user.authenticate(password_params[:password])
+    if user && user.is_delete 
+      flash.now[:danger] = 'このユーザーは退会済みです'
+      render :new
+    elsif user && user.authenticate(password_params[:password])
       log_in user
       redirect_to user_path(id: user.id), success: 'ログインに成功しました'
     else

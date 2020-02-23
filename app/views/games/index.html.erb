@@ -1,11 +1,19 @@
 <div class="game-index-wrapper">
   <div class="container">
+    <p>対戦募集検索</p>
+        <%= form_tag(search_games_path, method: "get") do %>
+        <%= label :category, 'カテゴリ' %>
+        <%= collection_select :category, :category_id, Category.all, :id, :category, {:class => 'form-control'}%>
+        <%= label :stadium_id, '球場' %>
+        <%= collection_select :stadium, :stadium_id, Stadium.all, :id, :name, {:class => 'form-control'}%>
+        <%= submit_tag "検索" %>
+        <% end %>
     <% @games.each do |game| %>
       <div class="row">
         <div class="col-md-5">
           <div class="game-index-single">
             <h2 class="game-author">
-            <p>代表者名  <%= game.user.name %></p>
+            <p>チーム名  <%= game.user.teamname %></p>
              <p>カテゴリー  <%= game.category.category %></p>
              <p>球場  <%= game.stadium.name %></p>
               <p>開催日時  <%= game.start_at %></p>

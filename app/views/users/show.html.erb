@@ -35,6 +35,38 @@
 <%= @user.teamname %>
 <%= @user.name %>
 <%= @user.area.name %>
+<div class="game-box">
+  <h1 class="text-center">対戦募集</h1>
+  <%= form_for @game do |f| %>
+  
+
+    <%= f.datetime_select :start_at %>
+    
+    <div class="form-group">
+      <%= f.label :category, class: 'text-white' %>
+      <%= f.collection_select :category_id, Category.all, :id, :category , class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :stadium, class: 'text-white' %>
+      <%= f.collection_select :stadium_id, Stadium.all, :id, :name , class: 'form-control'%>
+    </div>
+    <div>コメント：<br>
+            <%= f.label :content %>
+            <%= f.text_area :comment, class: 'form-control' %>　<div>
+    <%= f.submit '募集', class: 'game-block' %>
+  <% end %>
+</div>       
 <%= link_to '編集', edit_user_path %>
+
+
+<%= link_to user_path(current_user.id), method: :delete do %>
+退会
+<% end %>
+
+            
+              <%= link_to logout_path, method: :delete do %>
+              ログアウト
+              <% end %>
+            
 
 </html>

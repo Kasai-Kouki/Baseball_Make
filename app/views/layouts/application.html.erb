@@ -11,54 +11,61 @@
 
   <body>
     
- <header>
+    <header>
    
-    <nav class="header-box">
-      <ul class="col-sm-3">
-       <li class="top-box">
-        <%= link_to root_path do %>
-          <span><%= image_tag "icons/baseball_batter.png", class: "navbar-brand0" %></span>
-        <% end %>
-        </li>
-      </ul>
-      <ul class="col-sm-9">
-      <li class="top-box">
-        <%= link_to new_user_path do %>
-          <span><%= image_tag "icons/batt.png", class: "navbar-brand" %></span>
-        <% end %>
-        </li>
-       </ul>
-       <ul class="col-sm-9">
-      <li class="top-box">
-        <%= link_to login_path do%>
-          <span><%= image_tag "icons/grove.png", class: "navbar-brand" %></span>
-        <% end %>
-        </li>
+      <nav class="header-box">
+        <ul class="col-sm-3">
+         <li class="top-box">
+          <%= link_to root_path do %>
+            <span><%= image_tag "icons/baseball_batter.png", class: "navbar-brand0" %></span>
+          <% end %>
+          </li>
         </ul>
         <ul class="col-sm-9">
-        <li class="top-box">
-        
-          <span><%= image_tag "icons/cap.png", class: "navbar-brand" %></span>
-        </li>
+          <li class="top-box">
+            <%= link_to new_user_path do %>
+              <span><%= image_tag "icons/batt.png", class: "navbar-brand" %></span>
+            <% end %>
+          </li>
         </ul>
         <ul class="col-sm-9">
-        <li class="top-box">
-        
-          <span><%= image_tag "icons/stadium.png", class: "navbar-brand" %></span>
-        
-        </li>
-      </ul>
-      
-    </nav>
-  </header>
-  
+          <li class="top-box">
+            <%= link_to login_path do %>
+              <span><%= image_tag "icons/grove.png", class: "navbar-brand" %></span>
+            <% end %>
+          </li>
+        </ul>
+        <ul class="col-sm-9">
+          <li class="top-box">
+          <%= link_to users_path  do %>
+            <span><%= image_tag "icons/cap.png", class: "navbar-brand" %></span>
+          <% end %>
+          </li>
+        </ul>
+        <ul class="col-sm-9">
+          <li class="top-box">
+          <%= link_to games_path  do %>
+            <span><%= image_tag "icons/stadium.png", class: "navbar-brand" %></span>
+          <% end %>
+          </li>
+        <% if logged_in? %>
+        <ul class="col-sm-9">  
+            <li>
+              <%= link_to logout_path, method: :delete do %>
+              <%= image_tag "icons/logout.png" %>
+              <% end %>
             </li>
-          
         </ul>
-      </div>
-    </nav>
-   
-  <%= yield %>
+        <% end %>
+        </ul>
+        
+      </nav>
+    </header>
+
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+    <% end %>
+    <%= yield %>
 
   </body>
 

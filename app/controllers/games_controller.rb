@@ -6,7 +6,6 @@ class GamesController < ApplicationController
   def create
     @game =Game.new(game_params)
     @game.user_id = current_user.id
-    binding.pry
     if @game.save
       redirect_to new_game_path, success: '投稿に成功しました'
     else
@@ -17,6 +16,11 @@ class GamesController < ApplicationController
   
   def index
     @games = Game.all
+  end
+  
+  def search
+      @games = Game.where(stadium_id: params[:stadium][:stadium_id], category_id: params[:category][:category_id])
+      render :index
   end
   
   private 

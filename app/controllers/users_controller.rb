@@ -19,6 +19,8 @@ class UsersController < ApplicationController
     @stadium = Stadium.new
     @area = Area.new
     @game = Game.new
+    @room_id = message_room_id(current_user, @user)
+    @messages = Message.recent_in_room(@room_id)
   end
   
   def edit
@@ -54,6 +56,16 @@ class UsersController < ApplicationController
     @user.is_delete = '1'
     @user.save
      render template: "pages/index"
+  end
+  
+  def message_room_id(first_user, second_user)
+  first_id = first_user.id.to_i
+  second_id = second_user.id.to_i
+  if first_id < second_id
+    "#{first_user.id}-#{second_user.id}"
+  else
+    "#{second_user.id}-#{first_user.id}"
+  end
   end
   
   private

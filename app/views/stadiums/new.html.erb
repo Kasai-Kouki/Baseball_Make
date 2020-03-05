@@ -1,9 +1,9 @@
 <div class ="stadium-f">
-<% if current_user.admin? %>
+
   <%= form_for @stadium do |f| %>
     <%= f.label :stadium %>
     <%= f.text_field :name %>
     <%= f.submit '登録', class: 'stadium-block' %>
   <% end %>
-<% end %>
+
 </div>

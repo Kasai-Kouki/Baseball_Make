@@ -1,28 +1,28 @@
 <div class="container">
  <div class="row">
- <p>チーム検索</p>
-  <%= form_tag(search_users_path, method: "get") do %>
-  <%= label :category, 'カテゴリ' %>
-  <%= collection_select :category, :category_id, Category.all, :id, :category, {:class => 'form-control'}%>
-  <%= label :area_id, '地域' %>
-  <%= collection_select :area, :area_id, Area.all, :id, :name, {:class => 'form-control'}%>
-  <%= submit_tag "検索" %>
-  <% end %>
-  
-    <div class="container">
-      <% @users.each do |user| %>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="game-index-single">
-              <h2 class="game-author">
-              <%= user.teamname %>
-              <%= user.name %>
-              <%= user.area.name %>
-              </h2>
-             </div>
-          </div>
-        </div>
+   <div class="col-md-12">
+     <p><font size="10">チーム検索</font></p>
+      <%= form_tag(search_users_path, method: "get") do %>
+      <%= label :category, 'カテゴリ' %>
+      <%= collection_select :category, :category_id, Category.all, :id, :category, {:class => 'form-control'}%>
+      <%= label :area_id, '地域' %>
+      <%= collection_select :area, :area_id, Area.all, :id, :name, {:class => 'form-control'}%>
+      <%= submit_tag "検索" %>
       <% end %>
-    </div>
+   </div>
  </div>
 </div>
+  <div class="mycontainer">
+    <% @users.each do |user| %>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top" src="assets/batt.png" alt="イメージ画像">
+          <div class="card-body">
+            <h4 class="card-title"><%= user.teamname %></h4>
+            <p class="card-text"> <%= user.area.name %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>   
+    

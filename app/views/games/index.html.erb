@@ -1,27 +1,31 @@
-<div class="game-index-wrapper">
-  <div class="container">
-    <p>対戦募集検索</p>
-        <%= form_tag(search_games_path, method: "get") do %>
-        <%= label :category, 'カテゴリ' %>
-        <%= collection_select :category, :category_id, Category.all, :id, :category, {:class => 'form-control'}%>
-        <%= label :stadium_id, '球場' %>
-        <%= collection_select :stadium, :stadium_id, Stadium.all, :id, :name, {:class => 'form-control'}%>
-        <%= submit_tag "検索" %>
-        <% end %>
+<div class="container">
+ <div class="row">
+   <div class="col-md-12">
+     <p><font size="10">対戦募集検索</font></p>
+      <%= form_tag(search_games_path, method: "get") do %>
+      <%= label :category, 'カテゴリ' %>
+      <%= collection_select :category, :category_id, Category.all, :id, :category, {:class => 'form-control'}%>
+      <%= label :stadium_id, '球場' %>
+      <%= collection_select :stadium, :stadium_id, Stadium.all, :id, :name, {:class => 'form-control'}%>
+      <%= submit_tag "検索" %>
+      <% end %>
+   </div>
+ </div>
+</div>
+<div class="mycontainer">
     <% @games.each do |game| %>
-      <div class="row">
-        <div class="col-md-5">
-          <div class="game-index-single">
-            <h2 class="game-author">
-            <p>チーム名  <%= game.user.teamname %></p>
-             <p>カテゴリー  <%= game.category.category %></p>
-             <p>球場  <%= game.stadium.name %></p>
-              <p>開催日時  <%= game.start_at %></p>
-              <p>コメント  <%= game.comment %></p>
-            </h2>
-           </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top" src="assets/bg_baseball_ground.jpg" alt="イメージ画像">
+          <div class="card-body">
+            <h4 class="card-title"><b>チーム名</b><%= game.user.teamname %></h4>
+            <p class="card-text"><b>カテゴリー</b><%= game.category.category %></p>
+            <p class="card-text"><b>球場</b><%= game.stadium.name %></p>
+            <p class="card-text"><b>開催日時</b><%= game.start_at %></p>
+            <p class="card-text"><%= link_to  game_path(game.id), method: :get do %>詳細</p>
+            <% end %>
+          </div>
         </div>
       </div>
     <% end %>
-  </div>
-</div>
+</div>   

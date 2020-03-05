@@ -1,9 +1,9 @@
 <div class =area-f>
-<% if current_user.admin? %>
+
   <%= form_for @area do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <%= f.submit '登録', class: 'area-block' %>
   <% end %>
-<% end %>
+
 </div>

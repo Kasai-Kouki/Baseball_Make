@@ -1,0 +1,22 @@
+<div class="game-index-wrapper">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <%= form_for @recruitment do |f| %>
+          <div class="game-index-single">
+            <h2 class="game-author">
+            <p>チーム名  <%= @game.user.teamname %></p>
+             <p>カテゴリー  <%= @game.category.category %></p>
+             <p>球場  <%= @game.stadium.name %></p>
+              <p>開催日時  <%= @game.start_at %></p>
+              <p>コメント  <%= @game.comment %></p>
+            </h2>
+            <% if logged_in? %>
+            <%= f.submit '対戦申し込み', class: 'game-block' %>
+            <% end %>
+          <% end %>
+           </div>
+        </div>
+      </div>
+  </div>
+</div>

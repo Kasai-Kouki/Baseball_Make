@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
   resources :comments
+  resources :recruitments
 
  
   

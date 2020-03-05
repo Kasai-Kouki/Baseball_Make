@@ -14,6 +14,12 @@ class GamesController < ApplicationController
     end
   end
   
+  def show
+  @game = Game.find(params[:id])
+  @comment = @game.comments.build
+  @recruitment =Recruitment.new
+  end
+  
   def index
     @games = Game.all
   end

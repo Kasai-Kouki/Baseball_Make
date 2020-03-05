@@ -29,6 +29,9 @@
           </div>
           <%= f.submit "変更", class: 'btn-block btn-white' %>
         <% end %>
+        <%= link_to user_path(current_user.id), method: :delete do %>
+        退会
+        <% end %>
       </div>
     </div>
   </div>

@@ -1,30 +1,100 @@
-.col-sm-3{
-    width: 200px;
-	height: 100px;
+h1, h2 {
+  font-weight: 100;
 }
-.col-sm-9{
-    width: 250px;
-	height: 100px;
+
+.text-white {
+  color: #fff;
 }
-.top-box{
-  position: absolute;
-    width: 200px;
-      height: 100px;
-     left:50px;
-.navbar-brand0{
-  position: absolute;
-    width: 200px;
-      height: 100px;
-     left:0px;
+.page-title {
+  padding-top:30px;
 }
-.navbar-brand{
+.alert {
+  margin-top:60px;
   
   position: absolute;
-    width: 200px;
-      height: 100px;
-    left:0px;
+  width: 100%;
+  z-index: 10000;
+}
+.btn-white {
+  color: #fff;
+  border: 1px solid #fff;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  background-color: rgba(0,0,0,0.0);
+
+  &:hover {
+    color: #fff;
   }
-.game-index-single{
-  background:#ddd; border: 1px #ff0000 solid; padding:15px;
 }
+
+.top-hero-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('staduim.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
 }
+
+.top-hero-container {
+  padding-top: 220px;
+}
+  h1 {
+    font-size: 56px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    margin-bottom: 60px;
+  }
+.users-new-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-image: image-url('staduim.png');
+  background-position:  center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+}
+  .users-new-container {
+    padding-top: 50px;
+  }
+    .form-group {
+      margin-bottom: 20px;
+}
+.card-body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+
+.card-title {
+  margin-bottom: 0.75rem;
+}
+
+.cared-subtitile {
+  margin-top: -0.375rem;
+  margin-bottom: 0;
+}
+.card-text:last-child {
+  margin-bottom: 0;
+}
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,0.125);
+  border-radius: 0.25rem;
+  
+}
+  
+

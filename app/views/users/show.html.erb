@@ -1,72 +1,39 @@
 <html>
 <div class="titile-box">
-  <h1 class= mypage-box>マイページ</h1>
-</div>
-
-<div class="category-box">
-          <% if current_user.admin? %>
-             <h1 class="category-center">カテゴリー登録</h1>
-            <%= form_for @category do |f| %>
-              <%= f.text_field :category %>
-              <%= f.submit '登録', class: 'category-block' %>
-          <% end %>
-        <% end %>
-</div>
-  <div class="stadium-box">
-          <% if current_user.admin? %>
-          <h1 class="stadium-center">球場登録</h1>
-            <%= form_for @stadium do |f| %>
-              <%= f.text_field :name %>
-              <%= f.submit '登録', class: 'stadium-block' %>
-          <% end %>
-        <% end %>
-
-</div>
-  <div class="area-box">
-          <% if current_user.admin? %>
-          <h1 class="area-center">エリア登録</h1>
-            <%= form_for @area do |f| %>
-              <%= f.text_field :name %>
-              <%= f.submit '登録', class: 'area-block' %>
-          <% end %>
-        <% end %>
-
-</div>
-<%= @user.teamname %>
-<%= @user.name %>
-<%= @user.area.name %>
-<div class="game-box">
-  <h1 class="text-center">対戦募集</h1>
-  <%= form_for @game do |f| %>
+  <h1 class="page-title text-center">マイページ</h1>
   
-
-    <%= f.datetime_select :start_at %>
-    
-    <div class="form-group">
-      <%= f.label :category, class: 'text-white' %>
-      <%= f.collection_select :category_id, Category.all, :id, :category , class: 'form-control'%>
-    </div>
-    <div class="form-group">
-      <%= f.label :stadium, class: 'text-white' %>
-      <%= f.collection_select :stadium_id, Stadium.all, :id, :name , class: 'form-control'%>
-    </div>
-    <div>コメント：<br>
-            <%= f.label :content %>
-            <%= f.text_area :comment, class: 'form-control' %>　<div>
-    <%= f.submit '募集', class: 'game-block' %>
-  <% end %>
-</div>       
-<%= link_to '編集', edit_user_path %>
-
-
-<%= link_to user_path(current_user.id), method: :delete do %>
-退会
+  <div class="card container" style="width: 20rem;">
+            <h4 class="card-title"><b>チーム名</b> <%= @user.teamname %></h4>
+            <p class="card-text"><b>代表者名</b> <%= @user.name %></p>
+            <p class="card-text"><b>地域</b> <%= @user.area.name %></p>
+        <%= link_to '編集', edit_user_path %>
+  </div>
+  <div class="card container" style="width: 50rem;">
+    <div class="card-body ">
+    <h5 class="card-title text-center"><font size="7">対戦募集</font></h5>
+     <%= form_for @game do |f| %>
+     <%= f.datetime_select :start_at %>
+       <div class="form-group">
+        <%= f.label :カテゴリ %>
+        <%= f.collection_select :category_id, Category.all, :id, :category , class: 'form-control'%>
+          <div class="form-group">
+            <%= f.label :球場 %>
+            <%= f.collection_select :stadium_id, Stadium.all, :id, :name , class: 'form-control'%>
+            <div>
+              <%= f.label :コメント %>
+              <%= f.text_area :comment, class: 'form-control' %>　<div>
+               <%= f.submit '募集', class: 'game-block' %>
+                <% end %>
+            </div>      
+          </div>
+       </div>
+    </div> 
+  </div>
+</div>
+<%= link_to logout_path, method: :delete do %>
+ログアウト
 <% end %>
-
-            
-              <%= link_to logout_path, method: :delete do %>
-              ログアウト
-              <% end %>
             
 
 </html>
+
